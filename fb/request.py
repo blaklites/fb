@@ -1,5 +1,5 @@
 import settings
-import wiring
+import wiring 
 
 #First category of publish. Caling it first category because for publishing photos or more complex stuffs,
 #might have to code another publish method. Supporting publish types can found in settings.py
