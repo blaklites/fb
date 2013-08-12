@@ -1,9 +1,8 @@
-fb
-==
 
-**************************************************************
-*Python Sdk for the Facebook Graph Api. (Supports python 2.X)*
-**************************************************************
+
+******************************************************************
+*fb: Python Sdk for the Facebook Graph Api. (Supports python 2.X)*
+******************************************************************
 
 | **fb** is a python sdk for the Facebook Graph Api. The sdk provides three methods 
 | for interacting largely with facebook. publish(), get_object() and delete()
