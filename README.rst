@@ -1,5 +1,4 @@
 
-
 ******************************************************************
 *fb: Python Sdk for the Facebook Graph Api. (Supports python 2.X)*
 ******************************************************************
@@ -32,7 +31,7 @@
 |     
 |    *#Like an object(wall post, photo and anything thats likable in facebook) with id=object_id*
 |    facebook.publish(cat="likes", id=object_id)
-|
+| 
 |    *#Comment on an objects thats commentable*
 |    facebook.publish(cat="comments", id=object_id, message="My comment")
 |
