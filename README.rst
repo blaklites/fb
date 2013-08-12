@@ -1,4 +1,3 @@
-
 ******************************************************************
 *fb: Python Sdk for the Facebook Graph Api. (Supports python 2.X)*
 ******************************************************************
@@ -81,10 +80,10 @@
 *Examples*
 =============================================
 | *#Delete a status*
-| fb.delete(id=status_id)
+| facebook.delete(id=status_id)
 |
 | *#Delete a comment*
-| fb.delete(id=comment_id)
+| facebook.delete(id=comment_id)
 |
 | *#Delete a "LIKE"*
-| #fb.delete(cat="likes", id=object_id)
+| #facebook.delete(cat="likes", id=object_id)
