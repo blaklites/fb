@@ -26,7 +26,7 @@
 |    facebook=fb.graph.api(token)
 |    
 |    *#Post on the current user's wall*
-|    facebook.publish(cat="feed", id="me", message="My faecbook status")
+|    facebook.publish(cat="feed", id="me", message="My facebook status")
 |     
 |    *#Like an object(wall post, photo and anything thats likable in facebook) with id=object_id*
 |    facebook.publish(cat="likes", id=object_id)
