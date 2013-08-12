@@ -1,2 +1,2 @@
  
-import graph
+from . import graph
