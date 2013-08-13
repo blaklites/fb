@@ -14,8 +14,8 @@ def create():
 	return  httplib.HTTPSConnection('graph.facebook.com')
 
 
-#Sendrequest to facebook graph
-#Return the facebook-json response converted to python object
+#Sends request to facebook graph
+#Returns the facebook-json response converted to python object
 def send_request(req_cat, con, req_str, kwargs):
 	kwargs= urllib.urlencode(kwargs)           #keep the url consistent spaces and any special characters
 	con.request(req_cat, req_str, kwargs)      #send request to facebook graph
