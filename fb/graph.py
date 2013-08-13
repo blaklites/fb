@@ -12,7 +12,7 @@ class api:
 
 
 	#This method is used for creating objects in the facebook graph.
-	#The first paramter is "cat", tje category of publish. In addition to "cat"
+	#The first paramter is "cat", the category of publish. In addition to "cat"
 	#"id" must also be passed and is catched by "kwargs"
 	def publish(self,  cat, **kwargs):
 		res=request.publish_cat1("POST", self.con, self.token,  cat, kwargs)    
