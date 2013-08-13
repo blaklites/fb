@@ -1,11 +1,9 @@
 ******************************************************************
-*fb: Python Sdk for the Facebook Graph Api. (Supports python 2.X)*
+fb: *Python Sdk for the Facebook Graph Api. (Supports python 2.X)*
 ******************************************************************
 
-| **fb** is a python sdk for the Facebook Graph Api. The sdk provides two 
-| methods for interacting largely with facebook. One for publishing to facebook, 
-| publish(), and another for retrieving objects from facebook as python dictionary, 
-|  get_object()
+| **fb** is a python sdk for the Facebook Graph Api. The sdk provides three methods 
+| for interacting largely with facebook. publish(), get_object() and delete()
 | 
 | **sudo pip install fb**
 |
@@ -13,13 +11,14 @@
 
 *1. Publishing to Facebook*
 ===========================
-| For publishing, use the publish() method. At `developers.facebook.com/docs/reference/api/publishing/ <http://developers.facebook.com/docs/reference/api/publishing/>`_
-| under **'Other  Objects'**, see list of publish categories except "photos". Publishing includes 
-| wrirting wall post, liking objects, creating events and albums, etc. Currently photo 
-| upload is not supported
+| For publishing, use the publish() method.  Publishing means creating objects like:
+| a wall post, a like, events and albums, etc. Currently photo upload
+| is not supported. The method returns the id of the object created.
+| At `developers.facebook.com/docs/reference/api/publishing/ <http://developers.facebook.com/docs/reference/api/publishing/>`_
+| under **'Other  Objects'**, see list of publish categories except "photos".
 
 ====================================
- *Example of publishing to facebook*
+ *Examples*
 ====================================
 |    import fb    
 |    # Go to `developers.facebook.com/tools/explorer <http://developers.facebook.com/tools/explorer>`_ to generate test token
@@ -27,7 +26,7 @@
 |    facebook=fb.graph.api(token)
 |    
 |    *#Post on the current user's wall*
-|    facebook.publish(cat="feed", id="me", message="My faecbook status")
+|    facebook.publish(cat="feed", id="me", message="My facebook status")
 |     
 |    *#Like an object(wall post, photo and anything thats likable in facebook) with id=object_id*
 |    facebook.publish(cat="likes", id=object_id)
@@ -56,9 +55,10 @@
 | Objects can be fetched in two ways using the get_object() method. 
 | Fetch "single" object with  it's given "fields"  passed in a list.
 | Or retrieve "multiple" objects passed with their "ids" in a list.
+| The method returns the object as python dictionary containing related fields
 
 =============================================
-*Example of retrieving objects from facebook*
+*Examples*
 =============================================
 |    *#Retrieve given fields for a single object*
 |    object=facebook.get_object(cat="single", id=object_id, fields=["name", "email" ] )
@@ -68,3 +68,23 @@
 |
 |    *#Rertieve multiple objects*
 |    object=facebook.get_object(cat="multiple", ids=['zuck', 'me'] )
+
+*3. Delete Objects*
+===================
+
+| Deleting objects is simple. use the delete method and pass the id of the
+| object to be deleted. Note that a "like" has no id in facebook, so in case of deleting 
+| a "LIKE", you have to pass the id of the object liked and the category of the delete 
+| which is "likes".
+
+=============================================
+*Examples*
+=============================================
+| *#Delete a status*
+| facebook.delete(id=status_id)
+|
+| *#Delete a comment*
+| facebook.delete(id=comment_id)
+|
+| *#Delete a "LIKE"*
+| #facebook.delete(cat="likes", id=object_id)
