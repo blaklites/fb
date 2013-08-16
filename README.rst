@@ -140,7 +140,7 @@
 | #"name" of the nth friend in the object 
 | friends_and_education['friends']['data'][n]['name']
 |
-| #"name" and "id" of all friends
+| #"name" and "id" of all friends 
 | friends_and_education['friends']['data']
 |
 | **Note:**
