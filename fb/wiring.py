@@ -30,3 +30,4 @@ def send_request(req_cat, con, req_str, kwargs):
         if type(res) == t:
                 res=bytes.decode(res)
         return json.loads(res)                     #convert the response to python object
+ 
