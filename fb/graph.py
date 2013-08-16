@@ -1,5 +1,6 @@
 from . import wiring   #for http connection, requests and responds, similar stuffs
 from . import request  #for creating request string
+from . import helper   #for using the helper functions
 
 class api:
         token=None #facebook token
@@ -37,3 +38,8 @@ class api:
                 del kwargs['cat']
                 res=request.publish_cat1("DELETE", self.con, self.token,  cat, kwargs)
                 return res
+
+        #The helper method. This takes any object returned from facebook
+        #And displays its internal structure.
+        def show_fields(self, d):
+                return helper.fields(d)
