@@ -1,5 +1,5 @@
 from . import settings
-from . import wiring 
+from . import wiring  
 
 
 #Constructs a "POST" and "DELETE" URL. The function is used by the publish and delete method
