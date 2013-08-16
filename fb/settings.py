@@ -3,7 +3,7 @@
 #to ensure that the paramters passed for each category in the get_object  
 #method is valid. The file is actualy intented for customization of the sdk
 #through a single settings file. Keep eye on future versions 
-get_object_cat1_param={"single":"fields", "multiple":"ids" }
+get_object_cat1_param={"single":"fields", "multiple":"ids" } 
 
 
 #Note. Similar dictionaries can be made in order to keep
