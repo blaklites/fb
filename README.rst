@@ -145,6 +145,6 @@
 | friends_and_education['friends']['data']
 |
 | **Note:**
-| The idea behind introducing the sub_fields() method is to help developers
+| The idea behind introducing the show_fields() method is to help developers
 | get a visual of the internal structure of objects retrieved from facebook graph 
 | so that they can write their own methods easily to further meet their needs. 
