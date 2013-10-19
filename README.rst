@@ -92,8 +92,8 @@
 | *#Delete a "LIKE"*
 | facebook.delete(cat="likes", id=object_id)
 
-*4. Introducing The Helper Methods*
-===================================
+*4. The Helper Methods*
+=============================
 
 | As of version 0.4.0, there is one helper method, *show_fields()*. Using this method,
 | it is possible to view the structure of the objects returned by facebook. This will help
