@@ -41,7 +41,7 @@
 |    facebook.publish(cat = "albums", id = "me", name = "Album Name", message = "Album Details")
 |
 |    *#Create an event*
-|    facebook.publish(cat="events", id = "me", name = "My Event", start_time = "2013-10-16-12:20", end_time = "2013-10-18-14:30" )
+|    facebook.publish(cat = "events", id = "me", name = "My Event", start_time = "2013-10-16-12:20", end_time = "2013-10-18-14:30" )
 
 *Important*
 -----------
