@@ -25,23 +25,23 @@
 ====================================
 |    import fb    
 |    # Go to `developers.facebook.com/tools/explorer <http://developers.facebook.com/tools/explorer>`_ to generate test token
-|    token="*the facebook token you are going to use*"
-|    facebook=fb.graph.api(token)
+|    token = "*the facebook token you are going to use*"
+|    facebook = fb.graph.api(token)
 |    
 |    *#Post on the current user's wall*
-|    facebook.publish(cat="feed", id="me", message="My facebook status")
+|    facebook.publish(cat = "feed", id = "me", message = "My facebook status")
 |     
 |    *#Like an object(wall post, photo and anything thats likable in facebook) with id=object_id*
-|    facebook.publish(cat="likes", id=object_id)
+|    facebook.publish(cat = "likes", id = object_id)
 |
 |    *#Comment on an objects thats commentable*
-|    facebook.publish(cat="comments", id=object_id, message="My comment")
+|    facebook.publish(cat = "comments", id = object_id, message = "My comment")
 |
 |    *#Create an album*
-|    facebook.publish(cat="albums", id="me", name="Album Name", message="Album Details")
+|    facebook.publish(cat = "albums", id = "me", name = "Album Name", message = "Album Details")
 |
-|    *Create an event*
-|    facebook.publish(cat="events", id="me", name="My Event", start_time="2013-10-16-12:20", end_time="2013-10-18-14:30" )
+|    *#Create an event*
+|    facebook.publish(cat="events", id = "me", name = "My Event", start_time = "2013-10-16-12:20", end_time = "2013-10-18-14:30" )
 
 *Important*
 -----------
@@ -64,13 +64,13 @@
 *Examples*
 =============================================
 |    *#Retrieve given fields for a single object*
-|    object=facebook.get_object(cat="single", id=object_id, fields=["name", "email" ] )
+|    object = facebook.get_object(cat = "single", id = object_id, fields = ["name", "email" ] )
 |
 |    *#Retrieve ALL fields for a single object*
-|    object=facebook.get_object(cat="single", id=object_id, fields=[ ] )
+|    object = facebook.get_object(cat="single", id = object_id, fields = [ ] )
 |
 |    *#Rertieve multiple objects*
-|    object=facebook.get_object(cat="multiple", ids=['zuck', 'me'] )
+|    object = facebook.get_object(cat = "multiple", ids = ['zuck', 'me'] )
 
 *3. Delete Objects*
 ===================
@@ -84,13 +84,13 @@
 *Examples*
 =============================================
 | *#Delete a status*
-| facebook.delete(id=status_id)
+| facebook.delete(id = status_id)
 |
 | *#Delete a comment*
-| facebook.delete(id=comment_id)
+| facebook.delete(id = comment_id)
 |
 | *#Delete a "LIKE"*
-| facebook.delete(cat="likes", id=object_id)
+| facebook.delete(cat = "likes", id = object_id)
 
 *4. The Helper Methods*
 =============================
@@ -103,7 +103,7 @@
 *Examples*
 =============================================
 | *#Get "friends" and "education" of the current user*
-| friends_and_education=facebook.get_object(cat='single', id='me', fields=['friends', 'education'])
+| friends_and_education = facebook.get_object(cat = 'single', id = 'me', fields = ['friends', 'education'])
 | *#Display the Structure of the object returned from facebook graph*
 | facebook.show_fields(friends_and_education) 
 |
