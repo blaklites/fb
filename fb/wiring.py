@@ -11,17 +11,18 @@ try:
 except:
 	import json
 
-"""
-create and return instance that connect to facebook graph
-"""
+
 def create():
+	"""
+	create and return instance that connect to facebook graph
+	"""
 	return  httplib.HTTPSConnection('graph.facebook.com')
 
-"""
-Sends request to facebook graph
-Returns the facebook-json response converted to python object
-"""
 def send_request(req_cat, con, req_str, kwargs):
+	"""
+	Sends request to facebook graph
+	Returns the facebook-json response converted to python object
+	"""
         try:
                 kwargs = parse.urlencode(kwargs)    #python3x
         except:
