@@ -11,26 +11,31 @@ class api:
                 self.token=token
                 self.con=wiring.create()
 
-
-        #This method is used for creating objects in the facebook graph.
-        #The first paramter is "cat", the category of publish. In addition to "cat"
-        #"id" must also be passed and is catched by "kwargs"
+        """
+        This method is used for creating objects in the facebook graph.
+        The first paramter is "cat", the category of publish. In addition to "cat"
+        "id" must also be passed and is catched by "kwargs"
+        """
         def publish(self,  cat, **kwargs):
                 res=request.publish_cat1("POST", self.con, self.token,  cat, kwargs)    
                 return res
         
-        #This method is used for retrieving objects from facebook. "cat", the category, must be
-        #passed. When cat is "single", pass the "id "and desired "fields" of the single object. If the 
-        #cat is "multiple", only pass the "ids" of the objects to be fetched.
+        """
+        This method is used for retrieving objects from facebook. "cat", the category, must be
+        passed. When cat is "single", pass the "id "and desired "fields" of the single object. If the 
+        cat is "multiple", only pass the "ids" of the objects to be fetched.
+        """
         def get_object(self,  cat, **kwargs):
                 if 'id' not in kwargs.keys():
                         kwargs['id']=''
                 res=request.get_object_cat1(self.con, self.token, cat,  kwargs)
                 return res
         
-        #Used for deleting objects from the facebook graph. Just pass the id of the object to be 
-        #deleted. But in case of like, have to pass the cat ("likes") and object id as a like has no id
-        #itself in the facebook graph
+        """
+        Used for deleting objects from the facebook graph. Just pass the id of the object to be 
+        deleted. But in case of like, have to pass the cat ("likes") and object id as a like has no id
+        itself in the facebook graph
+        """
         def delete(self,  **kwargs):        
                 if 'cat' not in kwargs.keys():
                         kwargs['cat']=''
@@ -38,8 +43,10 @@ class api:
                 del kwargs['cat']
                 res=request.publish_cat1("DELETE", self.con, self.token,  cat, kwargs)
                 return res
-
-        #The helper method. This takes any object returned from facebook
-        #And displays its internal structure.
+        
+        """
+        The helper method. This takes any object returned from facebook
+        And displays its internal structure.
+        """
         def show_fields(self, d):
                 return helper.fields(d)
