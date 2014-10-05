@@ -125,7 +125,7 @@ Examples
 4. The Helper Methods
 ======================
 
-As of version 0.4.0, there is one helper method, **show_fields()**. Using this method, it is possible to view the structure of the objects returned by Facebook. This will help further to manipulate the fetched objects for individual needs.
+As of version 0.4.0, there is one helper method, **show_fields()**. Using this method, it is possible to view the structure of the objects returned by Facebook. This will help further manipulate the fetched objects for individual needs.
  
 
 Examples
