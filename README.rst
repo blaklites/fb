@@ -31,7 +31,7 @@ Using the publish() method, you can create(aka publish) objects like: status upd
 
 The method returns the id of the object created.
 
-Please refer to `https://developers.facebook.com/docs/graph-api/reference/v2.1/ <https://developers.facebook.com/docs/graph-api/reference/v2.1/>`_. All publishing categories can be used with this method except except "photos".
+Please refer to `https://developers.facebook.com/docs/graph-api/reference/v2.1/ <https://developers.facebook.com/docs/graph-api/reference/v2.1/>`_. All publishing categories can be used with this method except "photos".
 
 
 Examples
