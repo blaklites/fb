@@ -31,7 +31,7 @@ Using the publish() method, you can create(aka publish) objects like: status upd
 
 The method returns the id of the object created.
 
-Please refer to `https://developers.facebook.com/docs/graph-api/reference/v2.1/ <https://developers.facebook.com/docs/graph-api/reference/v2.1/>`_. All publishing categories can be used with this method except in case of "photos".
+Please refer to `https://developers.facebook.com/docs/graph-api/reference/v2.1/ <https://developers.facebook.com/docs/graph-api/reference/v2.1/>`_. All publishing categories can be used with this method except except "photos".
 
 
 Examples
@@ -121,7 +121,7 @@ Examples
     facebook.delete(cat = "likes", id = object_id)
 
 
-	
+    
 4. The Helper Methods
 ======================
 
@@ -196,7 +196,7 @@ In line with the structure, printed by the  method, we can access various parts 
 
     friends_and_education['friends']['data']
 
-	
+    
 Note
 -----
 
