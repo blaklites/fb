@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Fb by blaklites</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Fb</h1>
+      <h2 class="project-tagline">Python SDK for the Facebook Graph Api</h2>
+      <a href="https://github.com/blaklites/fb" class="btn">View on GitHub</a>
+      <a href="https://github.com/blaklites/fb/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/blaklites/fb/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="python-sdk-for-the-facebook-graph-api" class="anchor" href="#python-sdk-for-the-facebook-graph-api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Python SDK for the Facebook Graph API</h1>
+
+<p><strong>fb</strong> is a Python SDK for the Facebook Graph API. 
+The SDK provides three methods for interacting largely with facebook; </p>
+
+<ol>
+<li><strong>publish(),</strong></li>
+<li>
+<strong>get_object()</strong>, and </li>
+<li><strong>delete()</strong></li>
+</ol>
+
+<p>In addtion to the three, there is one helper method to view the structure of
+objects returned from facebook.</p>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>::</p>
+
+<pre><code>sudo pip install fb
+</code></pre>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Usage</strong>
+</h1>
+
+<h1>
+<a id="1-publishing-to-facebook" class="anchor" href="#1-publishing-to-facebook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Publishing to Facebook</h1>
+
+<p>Using the publish() method, you can create(aka publish) objects like: status update, wall post, a like, events and albums, etc. However, currently <em>photo upload</em> is not supported.</p>
+
+<p>The method returns the id of the object created.</p>
+
+<p>Please refer to <code>https://developers.facebook.com/docs/graph-api/reference/v2.1/ &lt;https://developers.facebook.com/docs/graph-api/reference/v2.1/&gt;</code>_. All publishing categories can be used with this method except "photos".</p>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
+
+<p><strong>Essential bit</strong></p>
+
+<p>Go to <code>developers.facebook.com/tools/explorer &lt;http://developers.facebook.com/tools/explorer&gt;</code>_ to generate test token. Then create the authentication with the token.::</p>
+
+<pre><code>import fb
+token = "Copy_Paste_the_token_that_Facebook_gave_you"
+facebook = fb.graph.api(token)
+</code></pre>
+
+<p><strong>Post on the current user's wall</strong>::</p>
+
+<pre><code>facebook.publish(cat = "feed", id = "me", message = "My facebook status")
+</code></pre>
+
+<p><strong>Like an object(wall post, photo and anything thats likable in facebook) with id=object_id</strong>::</p>
+
+<pre><code>facebook.publish(cat = "likes", id = object_id)
+</code></pre>
+
+<p><strong>Comment on an objects thats commentable</strong>::</p>
+
+<pre><code>facebook.publish(cat = "comments", id = object_id, message = "My comment")
+</code></pre>
+
+<p><strong>Create an album</strong>::</p>
+
+<pre><code>facebook.publish(cat = "albums", id = "me", name = "Album Name", message = "Album Details")
+</code></pre>
+
+<p><strong>Create an event</strong>::</p>
+
+<pre><code>facebook.publish(cat = "events", id = "me", name = "My Event", start_time = "2013-10-16-12:20", end_time = "2013-10-18-14:30" )
+</code></pre>
+
+<p><strong>An important note</strong></p>
+
+<p>In addition to 'cat' (the category) and 'id', <em>publish()</em> takes any parameter thats valid for the publish category(cat).
+Like "message" for wall post, "name" for albums, nothing for likes, etc. </p>
+
+<p>Please check Facebook documentation for full list of valid parameters for each kind of publishing. If you find that a parameter is raising error, it is maybe due to this SDK does not support the parameter yet, please report such cases to the author as an issue.</p>
+
+<h1>
+<a id="2-fetch-objects-from-facebook" class="anchor" href="#2-fetch-objects-from-facebook" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. Fetch Objects from Facebook</h1>
+
+<p>Objects can be fetched in two ways using the get_object() method. Fetch "single" object with  it's given "fields"  passed in a list. Or, retrieve "multiple" objects passed with their "ids" in a list. The method returns the object as python dictionary containing related fields.</p>
+
+<h2>
+<a id="examples-1" class="anchor" href="#examples-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
+
+<p><strong>Retrieve given fields for a single object</strong>::</p>
+
+<pre><code>object = facebook.get_object(cat = "single", id = object_id, fields = ["name", "email" ] )
+</code></pre>
+
+<p><strong>Retrieve ALL fields for a single object</strong>::</p>
+
+<pre><code>object = facebook.get_object(cat="single", id = object_id, fields = [ ] )
+</code></pre>
+
+<p><strong>Retrieve multiple objects</strong>::</p>
+
+<pre><code>object = facebook.get_object(cat = "multiple", ids = ['zuck', 'me'] )
+</code></pre>
+
+<h1>
+<a id="3-delete-objects" class="anchor" href="#3-delete-objects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Delete Objects</h1>
+
+<p>Deleting objects is simple. Use the delete() method and pass the id of the object to be deleted. Note that a "like" has no id in facebook, so in case of deleting a "LIKE", you have to pass the id of the object liked and the category of the delete which is "likes". </p>
+
+<h2>
+<a id="examples-2" class="anchor" href="#examples-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
+
+<p><strong>Delete a status</strong>::</p>
+
+<pre><code>facebook.delete(id = status_id)
+</code></pre>
+
+<p><strong>Delete a comment</strong>::</p>
+
+<pre><code>facebook.delete(id = comment_id)
+</code></pre>
+
+<p><strong>Delete a "Like"</strong>::</p>
+
+<pre><code>facebook.delete(cat = "likes", id = object_id)
+</code></pre>
+
+<h1>
+<a id="4-the-helper-methods" class="anchor" href="#4-the-helper-methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. The Helper Methods</h1>
+
+<p>As of version 0.4.0, there is one helper method, <strong>show_fields()</strong>. Using this method, it is possible to view the structure of the objects returned by Facebook. This will help further manipulate the fetched objects for individual needs.</p>
+
+<h2>
+<a id="examples-3" class="anchor" href="#examples-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
+
+<p><strong>Get "friends" and "education" of the current user</strong>::</p>
+
+<pre><code>friends_and_education = facebook.get_object(cat = 'single', id = 'me', fields = ['friends', 'education'])
+</code></pre>
+
+<p><strong>Display the Structure of the object returned from facebook graph</strong>::</p>
+
+<pre><code>facebook.show_fields(friends_and_education) 
+</code></pre>
+
+<p>The method will print the following:</p>
+
+<pre><code>education(list)
+
+........school
+
+.................id
+
+.................name
+
+........type
+
+........year
+
+...............id
+
+...............name
+
+friends
+
+........paging
+
+...............next
+
+........data(list)
+
+...............name
+
+...............id
+
+id
+</code></pre>
+
+<p>All of the above are dictionary keys with sub-keys. Some of the keys are prefixed by "(list)" which means their values are saved inside a list and should be accessed through indexing. </p>
+
+<p>In line with the structure, printed by the  method, we can access various parts of the object fetched from facebook as shown below.</p>
+
+<p><strong>"name" of schools attended</strong>::</p>
+
+<pre><code>friends_and_education['education'][0]['school']['name']
+friends_and_education['education'][1]['school']['name'] and so on........
+</code></pre>
+
+<p><strong>"type" of the nth school in the object</strong>::</p>
+
+<pre><code>friends_and_education['education'][n]['type']
+</code></pre>
+
+<p><strong>"name" of the nth friend in the object</strong>::</p>
+
+<pre><code>friends_and_education['friends']['data'][n]['name']
+</code></pre>
+
+<p><strong>"name" and "id" of all friends</strong>::</p>
+
+<pre><code>friends_and_education['friends']['data']
+</code></pre>
+
+<h2>
+<a id="note" class="anchor" href="#note" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Note</h2>
+
+<p>The idea behind introducing the show_fields() method is to help developers get a visual of the internal structure of objects retrieved from facebook graph so that they can write their own methods easily to further meet their needs.</p>
+
+<h1>
+<a id="feature-request--report-bugs" class="anchor" href="#feature-request--report-bugs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Feature request &amp; Report bugs</h1>
+
+<p>For any feature-request or to report a bug, please use Github's link's on the right-side of the page. Thank you.
+PreferencesEnglish</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/blaklites/fb">Fb</a> is maintained by <a href="https://github.com/blaklites">blaklites</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
